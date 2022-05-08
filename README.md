@@ -1,3 +1,5 @@
+[![Deployment Pipeline](https://github.com/union-digital-cuba/api.event.checker/actions/workflows/pipeline.yml/badge.svg)](https://github.com/union-digital-cuba/api.event.checker/actions/workflows/pipeline.yml)
+
 # API Event Checker 💻
 
 ## Description 📚
