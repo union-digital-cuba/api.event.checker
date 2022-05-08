@@ -10,8 +10,9 @@
     "dev": "nodemon --exec npm run babel-node -- src/app.js",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
-    "lint:check": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "build": "babel ./src -d ./lib"
   },
   "repository": {
     "type": "git",
