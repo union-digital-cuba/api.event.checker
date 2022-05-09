@@ -71,17 +71,22 @@ jobs:
       - name: Guardando Artefacto (BUILD)
         uses: actions/upload-artifact@v2
         with:
-          name: dist
-          path: dist
+          name: lib
+          path: lib
 
   deploy:
     needs: [lint, build]
     runs-on: ubuntu-18.04
     steps:
-      - name: Descargando Repositorio
-        uses: actions/checkout@v2
+      # - name: Descargando Repositorio
+      #   uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 0
+      - name: Descargando Artefacto (BUILD)
+        uses: actions/download-artifact@v2
         with:
-          fetch-depth: 0
+          name: lib
+          path: lib
       - name: Desplegando en HEROKU (DEPLOY)
         if: ${{github.event_name == 'push'}}
         uses: akhileshns/heroku-deploy@v3.12.12

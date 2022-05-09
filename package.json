@@ -4,7 +4,7 @@
   "description": "API para controlar la subscripcion a eventos, asi como gestionar los mensajes y notificaciones que son necesarias para el funcionamiento de las otras APIs",
   "main": "app.js",
   "scripts": {
-    "start": "babel-node src/app",
+    "start": "node lib/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel-node": "babel-node --presets='@babel/preset-env'",
     "dev": "nodemon --exec babel-node src/app",
