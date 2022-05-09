@@ -6,10 +6,16 @@
   },
   "extends": ["eslint:recommended", "prettier"],
   "env": {
+    "browser": true,
+    "commonjs": true,
     "es2021": true,
     "node": true
   },
   "rules": {
-    "no-console": "warn"
+    "no-console": "warn",
+    "indent": ["error", 2]
+    // "linebreak-style": ["error", "unix"],
+    // "quotes": ["error", "single"],
+    // "semi": ["error", "never"]
   }
 }
