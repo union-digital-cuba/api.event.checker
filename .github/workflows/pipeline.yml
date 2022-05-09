@@ -37,6 +37,17 @@ jobs:
     needs: [install]
     runs-on: ubuntu-18.04
     steps:
+      - name: Descargando Repositorio
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Instalando NodeJS v16
+        uses: actions/setup-node@v2
+        with:
+          cache: 'npm'
+          node-version: '16'
+      - name: Instalando Dependencias
+        run: npm ci
       - name: Ejectuando Chequeo de Codigo (LINT)
         run: npm run lint
 
@@ -44,6 +55,17 @@ jobs:
     needs: [install]
     runs-on: ubuntu-18.04
     steps:
+      - name: Descargando Repositorio
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Instalando NodeJS v16
+        uses: actions/setup-node@v2
+        with:
+          cache: 'npm'
+          node-version: '16'
+      - name: Instalando Dependencias
+        run: npm ci
       - name: Empaquetando Aplicacion (BUILD)
         run: npm run build
       - name: Guardando Artefacto (BUILD)
