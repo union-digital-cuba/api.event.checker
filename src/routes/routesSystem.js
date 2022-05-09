@@ -1,6 +1,7 @@
-import { healthCheck } from '../logic/bllSystem'
+import express from 'express'
+import { healthCheck, systemVersion } from '../logic/bllSystem'
 
-const express = require('express')
-const router = express.Router()
+export const systemRoutes = express.Router()
 
-router.get('/health', healthCheck)
+systemRoutes.get('/health', healthCheck)
+systemRoutes.get('/version', systemVersion)

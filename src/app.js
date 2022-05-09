@@ -1,8 +1,9 @@
 import express from 'express'
 import cors from 'cors'
-import { version } from '../package.json'
 import dotenv from 'dotenv'
+import { version } from '../package.json'
 import { consoleInfo } from './utils/handleConsole'
+import { systemRoutes } from './routes/routesSystem'
 
 const app = express()
 
@@ -19,6 +20,8 @@ app.set('json spaces', 2)
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(cors())
+
+app.use(systemRoutes)
 
 app.use(express.static('public'))
 
