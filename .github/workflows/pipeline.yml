@@ -10,6 +10,8 @@ on:
 jobs:
   avoid_redundancy:
     runs-on: ubuntu-18.04
+    permissions:
+      actions: write
     steps:
       - name: Cancelando Compilaciones Anteriores Redundantes
         uses: styfle/cancel-workflow-action@0.9.1
