@@ -19,10 +19,6 @@ jobs:
   lint:
     runs-on: ubuntu-18.04
     steps:
-      - name: Cancelando Compilaciones Anteriores Redundantes
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{github.token}}
       - name: Descargando Repositorio
         uses: actions/checkout@v2
         with:
@@ -39,10 +35,6 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-      - name: Cancelando Compilaciones Anteriores Redundantes
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{github.token}}
       - name: Descargando Repositorio
         uses: actions/checkout@v2
         with:
