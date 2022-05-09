@@ -36,9 +36,6 @@
     "luxon": "^2.4.0",
     "morgan": "^1.10.0"
   },
-  "eslintConfig": {
-    "extends": "./node_modules/standard/eslintrc.json"
-  },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
     "@babel/core": "^7.17.10",
