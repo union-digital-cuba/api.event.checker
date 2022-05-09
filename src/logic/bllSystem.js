@@ -1,7 +1,7 @@
 import { version } from '../../package.json'
 
 export const healthCheck = (req, res) => {
-  res.send('OK')
+  res.send('Its alive!')
 }
 
 export const systemVersion = (req, res) => {
