@@ -16,7 +16,7 @@ jobs:
         with:
           access_token: ${{github.token}}
 
-  lint:
+  install:
     runs-on: ubuntu-18.04
     steps:
       - name: Descargando Repositorio
@@ -26,25 +26,22 @@ jobs:
       - name: Instalando NodeJS v16
         uses: actions/setup-node@v2
         with:
+          cache: 'npm'
           node-version: '16'
       - name: Instalando Dependencias
-        run: npm install --no-audit --no-fund --no-optional
+        run: npm ci
+
+  lint:
+    needs: [install]
+    runs-on: ubuntu-18.04
+    steps:
       - name: Ejectuando Chequeo de Codigo (LINT)
         run: npm run lint
 
   build:
+    needs: [install]
     runs-on: ubuntu-18.04
     steps:
-      - name: Descargando Repositorio
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Instalando NodeJS v16
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Instalando Dependencias
-        run: npm install --no-audit --no-fund --no-optional
       - name: Empaquetando Aplicacion (BUILD)
         run: npm run build
       - name: Guardando Artefacto (BUILD)
