@@ -5,7 +5,7 @@ export const healthCheck = (req, res) => {
 }
 
 export const systemVersion = (req, res) => {
-  res.status(200).json(`API Version: ${version}`)
+  res.status(200).json(`${version}`)
 }
 
 export const getHome = (req, res) => {
