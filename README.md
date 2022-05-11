@@ -8,8 +8,8 @@ API para controlar la subscripcion a eventos, asi como gestionar los mensajes y 
 
 ## Installation 💡
 
-npm install
-npm run dev
+- npm install
+- npm run dev
 
 ## App features 🪐
 
