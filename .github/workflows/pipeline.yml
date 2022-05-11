@@ -87,9 +87,9 @@ jobs:
   deploy:
     needs: [lint, build]
     runs-on: ubuntu-18.04
-    environment:
-      name: ${{ github.event_name != 'pull_request' && 'Production' || 'Preview'}}
-      url: ${{ steps.deploy.outputs.url }}
+    # environment:
+    #   name: ${{ github.event_name != 'pull_request' && 'Production' || 'Preview'}}
+    #   url: ${{ steps.deploy.outputs.url }}
     steps:
       - name: Descargando Repositorio
         uses: actions/checkout@v2
