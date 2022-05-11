@@ -23,7 +23,7 @@ app.use(cors())
 
 app.use(systemRoutes)
 
-app.use(express.static('public'))
+app.use(express.static('dist'))
 
 app.listen(PORT, () => {
   consoleInfo(`API v${version}, Server Started at: http://${SERVER}:${PORT} ☕`)

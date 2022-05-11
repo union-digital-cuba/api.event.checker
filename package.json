@@ -4,15 +4,17 @@
   "description": "API para controlar la subscripcion a eventos, asi como gestionar los mensajes y notificaciones que son necesarias para el funcionamiento de las otras APIs",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --exec babel-node src/app",
+    "start": "node lib/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "babel-node": "babel-node --presets='@babel/preset-env'",
     "dev": "nodemon --exec babel-node src/app",
+    "build": "rimraf dist && webpack --mode production",
+    "node-build": "babel ./src -d ./lib",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "build": "babel ./src -d ./lib"
+    "webpack-build": "rimraf dist && webpack",
+    "webpack-dev": "webpack-dev-server --open --mode development"
   },
   "repository": {
     "type": "git",
@@ -44,10 +46,15 @@
     "@babel/preset-env": "^7.17.10",
     "@babel/register": "^7.17.7",
     "@babel/runtime": "^7.17.9",
+    "babel-loader": "^8.2.5",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "nodemon": "^2.0.16",
     "prettier": "^2.0.5",
-    "standard": "^17.0.0"
+    "rimraf": "^3.0.2",
+    "standard": "^17.0.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
   }
 }

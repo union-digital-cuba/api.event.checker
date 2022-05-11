@@ -92,4 +92,3 @@ jobs:
           healthcheck: 'https://${{secrets.HEROKU_APP}}.herokuapp.com/health'
           rollbackonhealthcheckfailed: true
           delay: 5
-        run: echo 'https://${{secrets.HEROKU_APP}}.herokuapp.com/health'
