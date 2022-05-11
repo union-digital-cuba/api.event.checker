@@ -2,12 +2,13 @@ name: Deployment Pipeline
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main]
   pull_request:
     branches: [main, develop]
     types: [opened, synchronize]
 
 jobs:
+  # Cancel Previous Redundant Builds
   avoid_redundancy:
     runs-on: ubuntu-18.04
     permissions:
@@ -18,6 +19,17 @@ jobs:
         with:
           access_token: ${{github.token}}
 
+  # Assigns the event creator to the PR
+  assign_pr_owner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Asignando PR al creador
+        uses: thomaseizinger/assign-pr-creator-action@v1.0.0
+        if: github.event_name == 'pull_request' && github.event.action == 'opened'
+        with:
+          repo-token: ${{ secrets.USER_TOKEN }}
+
+  # Install Node and creating cache
   install:
     runs-on: ubuntu-18.04
     steps:
@@ -31,8 +43,9 @@ jobs:
           cache: 'npm'
           node-version: '16'
       - name: Instalando Dependencias
-        run: npm install
+        run: npm install --no-audit --no-fund --no-optional
 
+  # Lint the code
   lint:
     needs: [install]
     runs-on: ubuntu-18.04
@@ -47,10 +60,11 @@ jobs:
           cache: 'npm'
           node-version: '16'
       - name: Instalando Dependencias
-        run: npm install
+        run: npm install --no-audit --no-fund --no-optional
       - name: Ejectuando Chequeo de Codigo (LINT)
         run: npm run lint
 
+  # Creates a build and uploads an artifact
   build:
     needs: [install]
     runs-on: ubuntu-18.04
@@ -65,13 +79,17 @@ jobs:
           cache: 'npm'
           node-version: '16'
       - name: Instalando Dependencias
-        run: npm install
+        run: npm install --no-audit --no-fund --no-optional
       - name: Empaquetando Aplicacion (BUILD)
         run: npm run build
 
+  # Deploy to Heroku
   deploy:
     needs: [lint, build]
     runs-on: ubuntu-18.04
+    environment:
+      name: ${{ github.event_name != 'pull_request' && 'Production' || 'Preview'}}
+      url: ${{ steps.deploy.outputs.url }}
     steps:
       - name: Descargando Repositorio
         uses: actions/checkout@v2
