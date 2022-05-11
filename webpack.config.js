@@ -1,4 +1,10 @@
 const path = require('path')
+const SwaggerJSDocWebpackPlugin = require('swagger-jsdoc-webpack-plugin')
+
+const PORT = process.env.PORT || 3000
+const SERVER = process.env.SERVER || 'localhost'
+
+const { version, description, author } = require('./package.json')
 
 module.exports = {
   mode: 'production',
@@ -18,4 +24,21 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new SwaggerJSDocWebpackPlugin({
+      definition: {
+        openapi: '3.0.0',
+        info: {
+          title: 'API Event Checker',
+          description: description,
+          version: version,
+          contact: {
+            name: author,
+          },
+          servers: [`http://${SERVER}:${PORT}`, `https://api-event-checker.herokuapp.com`],
+        },
+      },
+      apis: ['./src/routes/*.js'],
+    }),
+  ],
 }
