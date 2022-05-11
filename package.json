@@ -4,7 +4,7 @@
   "description": "API para controlar la subscripcion a eventos, asi como gestionar los mensajes y notificaciones que son necesarias para el funcionamiento de las otras APIs",
   "main": "app.js",
   "scripts": {
-    "start": "node lib/app.js",
+    "start": "node dist/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec babel-node src/app",
     "build": "rimraf dist && webpack --mode production",
