@@ -39,7 +39,7 @@
     "morgan": "^1.10.0",
     "swagger-jsdoc": "^6.2.1",
     "swagger-jsdoc-webpack-plugin": "^2.0.2",
-    "swagger-ui-express": "^4.3.0"
+    "swagger-ui-express": "^4.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
